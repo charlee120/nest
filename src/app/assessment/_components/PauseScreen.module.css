@@ -1,0 +1,38 @@
+.pauseBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: dotPulse 1.3s ease-in-out infinite;
+}
+
+.dotH1 {
+  background: var(--honey);
+  animation-delay: 0s;
+}
+
+.dotH2 {
+  background: var(--honey);
+  animation-delay: 0.22s;
+}
+
+.dotM {
+  background: var(--moss);
+  animation-delay: 0.44s;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot { animation: none; opacity: 0.6; }
+}

@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+
+  "db:types": "supabase gen types typescript --project-id YOUR_STAGING_PROJECT_REF --schema public > src/types/database.ts",
+  "db:push":  "supabase db push",
+  "db:reset": "supabase db reset"
+},
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
     "@supabase/ssr": "^0.10.3",

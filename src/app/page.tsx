@@ -1,17 +1,15 @@
+import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
+import LandingPage from './_components/LandingPage'
 
-export default async function Page() {
+export const metadata: Metadata = {
+  title: 'nest — you don\'t have to carry this alone',
+  description: 'nest is a warm, private space for people navigating loneliness, breakups, anxiety, relationship struggles and the heavy in-between days.',
+}
+
+export default async function RootPage() {
   const supabase = await createClient()
-  const { data: { user }, error } = await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser()
 
-  if (error && error.message !== 'Auth session missing!') {
-    return <p>Connection failed: {error.message}</p>
-  }
-
-  return (
-    <div style={{ padding: '40px', fontFamily: 'monospace' }}>
-      <p>✓ Supabase connected</p>
-      <p>User: {user ? user.email : 'not signed in (expected)'}</p>
-    </div>
-  )
+  return <LandingPage isAuthenticated={!!user} />
 }
